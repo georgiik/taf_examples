@@ -1,4 +1,5 @@
 module.exports = {
 	tests: './tests',
-	suite: './suites/blocker.suite',
+	suite: './suites/context.suite',
+	context: './context/test.context'
 }

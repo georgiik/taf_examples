@@ -129,3 +129,15 @@ module.exports = {
 ```
 #### 3.4 Run test suite with context
 `taf --tests ./tests --suite ./suites/context.suite.js --context ./context/test.context.js`
+### 4. Configuration
+It is possible to put all command-line arguments into config file.
+#### 4.1 Create config file
+```js
+module.exports = {
+    tests: './tests',
+    suite: './suites/context.suite',
+    context: './context/test.context'
+}
+```
+#### 4.2 Run tests
+`taf --config config.js`
