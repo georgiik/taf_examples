@@ -1,10 +1,10 @@
-#TAF
+# TAF
 TAF is a test runner for JavaScript. This repository contains examples of its usage.
-##Getting started
-###Install TAF
+## Getting started
+### Install TAF
 `npm install -g taf`
-###1. Simple tests 
-####1.1 Create tests in *tests* folder
+### 1. Simple tests 
+#### 1.1 Create tests in *tests* folder
 Each test method name should start with *test*.
 ```js
 const assert = require('assert')
@@ -29,10 +29,10 @@ class TestOne {
 
 module.exports = TestOne
 ```
-####1.2 Run tests
+#### 1.2 Run tests
 `taf --tests ./tests`
-###2. Tests with properties 
-####2.1 Create tests with properties
+### 2. Tests with properties 
+#### 2.1 Create tests with properties
 ```js
 const assert = require('assert')
 
@@ -59,7 +59,7 @@ class TestTwo {
 
 module.exports = TestTwo
 ```
-####2.2 Create test suite *blocker.suite* in *suites* folder
+#### 2.2 Create test suite *blocker.suite* in *suites* folder
 By default tests are run in one thread, to override this setting add *threadCount* to test suite.
 
 To select tests which have severity Blocker define *query* method. This method will be called with 
@@ -73,10 +73,10 @@ module.exports = {
     }
 }
 ```
-####2.3 Run test suite
+#### 2.3 Run test suite
 `taf --tests ./tests --suite ./suites/blocker.suite.js`
-###3. Tests with context
-####3.1 Create tests with context
+### 3. Tests with context
+#### 3.1 Create tests with context
 Each test body is now have *testContext* parameter. This parameter is object passed to each test.
 ```js
 const assert = require('assert')
@@ -102,11 +102,12 @@ class TestThree {
 
 module.exports = TestThree
 ```
-####3.2 Create context provider
+#### 3.2 Create context provider
 Context provider class should have *getContext* method. This method will be called with *context* parameter 
 which contains default context. In this method we can extend the default context by adding more properties. 
 For this example the property is *value*. Method *getContext* is going to be called before each test and result of 
 this method will be injected into test.
+
 ```js
 class TestContext {
     getContext(context) {
@@ -117,7 +118,7 @@ class TestContext {
 
 module.exports = TestContext
 ```
-####3.3 Create test suite *context.suite* in *suites* folder
+#### 3.3 Create test suite *context.suite* in *suites* folder
 ```js
 module.exports = {
     threadCount: 2,
@@ -126,5 +127,5 @@ module.exports = {
     }
 }
 ```
-####3.4 Run test suite with context
+#### 3.4 Run test suite with context
 `taf --tests ./tests --suite ./suites/context.suite.js --context ./context/test.context.js`
